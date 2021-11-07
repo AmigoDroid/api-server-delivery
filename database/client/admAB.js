@@ -16,7 +16,7 @@ module.exports={
     },
     async cadastrar(req,res){
         const body = req.body;
-        const tokenAdmin = req.params.tokenAdmin;;
+        const tokenAdmin = req.params.tokenAdmin;
         console.log("Token: "+tokenAdmin);
             const cadastre = await clienteStore.create(body);
             

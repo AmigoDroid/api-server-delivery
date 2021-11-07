@@ -35,9 +35,6 @@ module.exports = {
             }
         }
     },
-
-
-
     async cadastro(req, res) {
         const usuario = req.body;
         const novo = cliente_user.create(usuario).then(() => {
@@ -45,5 +42,9 @@ module.exports = {
         }).catch(() => {
             return res.send('deu erro');
         });
+    },
+    async home(req,res) {
+        const dados = await clienteStore.findAll();
+        res.json({status:true,body:dados});
     }
 }
