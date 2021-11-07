@@ -2,6 +2,7 @@ const express = require('express');
 const body = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 //VARIAVES
@@ -16,6 +17,7 @@ app.use(body.urlencoded({extended:false}));
 app.use(express.json());
 app.use(cors());
 app.use(rotas);
+
 
 
 //STARTAR SERVER

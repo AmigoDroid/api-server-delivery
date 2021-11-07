@@ -1,4 +1,6 @@
-const cliente = require('../config/clientes_stores');
+const clienteStore = require('../config/clientes_stores');
+const cliente_user = require('../config/clientes_users');
+const db = require('../config/db');
 const admin = 'admin'
 
 module.exports={
@@ -6,7 +8,7 @@ module.exports={
         const tokenAdmin = req.params.tokenAdmin;
         console.log("Token: "+tokenAdmin);
         if(tokenAdmin===admin){
-            const listaClientes = await cliente.findAll();
+            const listaClientes = await clienteStore.findAll();
             return res.json(listaClientes).status(200);
         }else{
             return res.send('erro');
@@ -16,11 +18,14 @@ module.exports={
         const body = req.body;
         const tokenAdmin = req.params.tokenAdmin;;
         console.log("Token: "+tokenAdmin);
-        if (tokenAdmin === admin) {
-            const cadastre = await cliente.create(body);
+            const cadastre = await clienteStore.create(body);
+            
             return res.json(body).status(200);
-        }else{
-            return res.send('erro');
-        }
+    },
+    async listaUser(req,res){
+        const db = await cliente_user.findAll().then((f)=>{
+            return  res.json(f).status(200);
+        })
+      
     }
 }
