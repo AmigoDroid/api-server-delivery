@@ -25,7 +25,8 @@ function verificarJWT(req,res, next){
 
 //ADMIN
 rota.get('/',verificarJWT,admin.listaUser);
-rota.get('/lista',verificarJWT,admin.listar);
+rota.get('/lista/admin',verificarJWT,admin.listar);
+rota.get('/lista/users',user.listar);
 
 //USUARIO
 rota.post('/loginUser',user.login);
