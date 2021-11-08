@@ -39,9 +39,9 @@ module.exports = {
     async cadastro(req, res) {
         const usuario = req.body;
         const novo = cliente_user.create(usuario).then(() => {
-            return res.send('usuario cadastrado').status(200);
+            return res.json({status:true})
         }).catch(() => {
-            return res.send('deu erro');
+            return res.json({status:false});
         });
     },
     async home(req,res) {
