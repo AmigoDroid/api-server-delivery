@@ -32,8 +32,9 @@ module.exports={
     },
     async loginAdmin(req,res){
         const body = req.body;
-        const usuario = body.username;
-        const senha = body.password;
+        const usuario = body.user;
+        const senha = body.pass;
+        
         if(usuario==useradmin && senha==passadmin){
             const tokenAdmin = jwt.sign({userId:'admin'},secretAdmin,{expiresIn:300});
             return res.json({status:true,tokenAdmin:tokenAdmin});
