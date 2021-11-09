@@ -26,8 +26,8 @@ function verificarJWT(req,res, next){
 function verificarADM(req,res, next){
     // const token = req.headers['x-acess-token'];
     const body = req.body;
-    const dados = JSON.parse(body);
-     jwt.verify(dados.tokenAdmin,secretAdmin,(err,decoded)=>{
+    //const dados = JSON.parse(body);
+     jwt.verify(body.tokenAdmin,secretAdmin,(err,decoded)=>{
          if(err){
              res.json({status:false}).status(401);
          }else{

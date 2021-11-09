@@ -36,6 +36,8 @@ module.exports={
         }else{
             return res.json({status:false});
         }
-    
+    },
+    async delete(req,res){
+        
     }
 }
