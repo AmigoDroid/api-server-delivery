@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 const secret = 'chave-58242660'
+const secretAdmin = 'admin-58242660'
 
 
 //ROTAS
@@ -22,11 +23,25 @@ function verificarJWT(req,res, next){
       
     })
 }
+function verificarADM(req,res, next){
+    // const token = req.headers['x-acess-token'];
+    const token = req.params.token;
+    console.log("token: "+token);
+     jwt.verify(token,secretAdmin,(err,decoded)=>{
+         if(err){
+             res.json({status:false}).status(401);
+         }else{
+         next();
+         };
+       
+     })
+ }
 
 //ADMIN
-rota.get('/',verificarJWT,admin.listaUser);
-rota.get('/lista/admin',verificarJWT,admin.listar);
-rota.get('/lista/users',user.listar);
+//rota.get('/',verificarJWT,admin.listaUser);
+rota.post('login/admin',admin.loginAdmin);
+rota.get('/lista/admin',verificarADM,admin.listar);
+rota.get('/lista/users',verificarADM,user.listar);
 
 //USUARIO
 rota.post('/loginUser',user.login);
