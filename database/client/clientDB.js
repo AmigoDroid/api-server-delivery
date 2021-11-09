@@ -2,7 +2,6 @@ const cliente_user = require('../config/clientes_users');
 const clienteStore = require('../config/clientes_stores');
 const db = require('../config/db');
 const jwt = require('jsonwebtoken');
-const { listar } = require('./admAB');
 const secret = 'chave-58242660'
 
     const payload={

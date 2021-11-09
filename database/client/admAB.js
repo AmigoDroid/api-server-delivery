@@ -1,6 +1,7 @@
 const clienteStore = require('../config/clientes_stores');
 const cliente_user = require('../config/clientes_users');
 const db = require('../config/db');
+const jwt = require('jsonwebtoken');
 const useradmin = 'admin';
 const passadmin = 'senha';
 const secretAdmin = 'admin-58242660'
@@ -35,7 +36,7 @@ module.exports={
         const usuario = body.user;
         const senha = body.pass;
         
-        if(usuario===useradmin && senha===passadmin){
+        if(usuario==useradmin && senha==passadmin){
             const tokenAdmin = jwt.sign({userId:'admin'},secretAdmin,{expiresIn:300});
             return res.json({status:true,tokenAdmin:tokenAdmin});
         }else{
