@@ -8,14 +8,8 @@ const secretAdmin = 'admin-58242660'
 
 module.exports={
     async listar (req,res){
-        const tokenAdmin = req.params.tokenAdmin;
-        console.log("Token: "+tokenAdmin);
-        if(tokenAdmin===admin){
             const listaClientes = await clienteStore.findAll();
-            return res.json(listaClientes).status(200);
-        }else{
-            return res.send('erro');
-        }
+            return res.json({status:true,body:listaClientes}).status(200);
     },
     async cadastrar(req,res){
         const body = req.body;
