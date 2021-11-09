@@ -1,7 +1,9 @@
 const clienteStore = require('../config/clientes_stores');
 const cliente_user = require('../config/clientes_users');
 const db = require('../config/db');
-const admin = 'admin'
+const useradmin = 'admin';
+const passadmin = 'senha';
+const secretAdmin = 'admin-58242660'
 
 module.exports={
     async listar (req,res){
@@ -27,5 +29,17 @@ module.exports={
             return  res.json(f).status(200);
         })
       
+    },
+    async loginAdmin(req,res){
+        const body = req.body;
+        const usuario = body.username;
+        const senha = body.password;
+        if(usuario==useradmin && senha==passadmin){
+            const tokenAdmin = jwt.sign({userId:'admin'},secretAdmin,{expiresIn:300});
+            return res.json({status:true,tokenAdmin:tokenAdmin});
+        }else{
+            return res.json({status:false});
+        }
+    
     }
 }
