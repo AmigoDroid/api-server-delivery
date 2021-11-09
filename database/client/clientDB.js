@@ -49,6 +49,6 @@ module.exports = {
     },
     async listar(req,res)  {
         const db = await cliente_user.findAll();
-        res.json({status:true,body:db});
+       return res.json({status:true,body:db});
     }
 }

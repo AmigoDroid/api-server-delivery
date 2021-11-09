@@ -25,9 +25,9 @@ function verificarJWT(req,res, next){
 }
 function verificarADM(req,res, next){
     // const token = req.headers['x-acess-token'];
-    const token = req.params.token;
-    console.log("token: "+token);
-     jwt.verify(token,secretAdmin,(err,decoded)=>{
+    const body = req.body;
+    const dados = JSON.parse(body);
+     jwt.verify(dados.tokenAdmin,secretAdmin,(err,decoded)=>{
          if(err){
              res.json({status:false}).status(401);
          }else{
@@ -40,8 +40,8 @@ function verificarADM(req,res, next){
 //ADMIN
 //rota.get('/',verificarJWT,admin.listaUser);
 rota.post('/login/admin',admin.loginAdmin);
-rota.post('/lista/admin',verificarADM,admin.listar);
-rota.apost('/lista/users',verificarADM,user.listar);
+rota.post('/lista/stores',verificarADM,admin.listar);
+rota.post('/lista/users',verificarADM,user.listar);
 
 //USUARIO
 rota.post('/loginUser',user.login);
