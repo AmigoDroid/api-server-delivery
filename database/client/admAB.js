@@ -37,7 +37,11 @@ module.exports={
             return res.json({status:false});
         }
     },
-    async delete(req,res){
-        
+    async deleteCliente(req,res){
+        const dados = req.body;
+        const id = dados.id;
+        const db = await clienteStore.findByPk(id);
+        db.destroy();
+        return res.json({status:true});
     }
 }
