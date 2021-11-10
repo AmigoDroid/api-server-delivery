@@ -42,6 +42,8 @@ function verificarADM(req,res, next){
 rota.post('/login/admin',admin.loginAdmin);
 rota.post('/lista/stores',verificarADM,admin.listar);
 rota.post('/lista/users',verificarADM,user.listar);
+rota.post('/apagar/loja',verificarADM,admin.deleteLoja);
+rota.post('/apagar/pessoa',verificarADM,admin.deletarPessoa);
 
 //USUARIO
 rota.post('/loginUser',user.login);
