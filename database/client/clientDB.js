@@ -50,5 +50,13 @@ module.exports = {
     async listar(req,res)  {
         const db = await cliente_user.findAll();
        return res.json({status:true,body:db});
+    },
+    async cadastrarLoja(req,res){
+        const dados = req.body;
+        const nloja =  clienteStore.create(dados).then(()=>{
+            return res.json({status:true});
+        }).catch(()=>{
+            return res.json({status:false});
+        })
     }
 }
