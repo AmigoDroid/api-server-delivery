@@ -50,5 +50,25 @@ module.exports={
         const db = await cliente_user.findByPk(id);
         db.destroy();
         return res.json({status:true});
+    },
+    async atualizarLoja(req, res){
+        const dados = req.body;
+        const{nome,descrision,telefone,itens,username,password} = dados;
+        const id = dados.id;
+        
+        const sv = await clienteStore.findByPk(id);
+        sv.nome=nome;
+        sv.descrision=descrision;
+        sv.telefone=telefone;
+        sv.itens=itens;
+        sv.username=username;
+        sv.password=password;
+        sv.save();
+        return res.json({status:true});
+    },
+    async lojaDados(req,res){
+        const dados = req.body;
+        let db = await clienteStore.findByPk(dados.id);
+        res.json({status:true,body:db});
     }
 }

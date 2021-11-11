@@ -45,6 +45,7 @@ rota.post('/lista/users',verificarADM,user.listar);
 rota.post('/apagar/loja',verificarADM,admin.deleteLoja);
 rota.post('/apagar/pessoa',verificarADM,admin.deletarPessoa);
 rota.post('/cadastrar/loja',verificarADM,user.cadastrarLoja);
+rota.post('/editar/loja',admin.atualizarLoja);
 
 //USUARIO
 rota.post('/loginUser',user.login);
