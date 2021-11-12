@@ -72,7 +72,8 @@ module.exports={
         res.json({status:true,body:db});
     },
     async dados(req,res){
-      const db =  await clienteStore.findByPk(req.params.id);
+        const id = req.params.id;
+      const db =  await clienteStore.findByPk(id);
        return res.json(db);
     }
 }
