@@ -56,15 +56,16 @@ module.exports={
         const{nome,descrision,telefone,itens,username,password} = dados;
         const id = dados.id;
         
-        const sv = await clienteStore.findByPk(id);
-        sv.nome=nome;
-        sv.descrision=descrision;
-        sv.telefone=telefone;
-        sv.itens=itens;
-        sv.username=username;
-        sv.password=password;
+        const sv = await clienteStore.findByPk(id)
+        sv.nome=dados.nome;
+        sv.descrision=dados.descrision;
+        sv.telefone=dados.telefone;
+        sv.itens=dados.itens;
+        sv.username=dados.username;
+        sv.password=dados.password;
         sv.save();
-        return res.json({status:true});
+        return res.json(sv);
+       
     },
     async lojaDados(req,res){
         const dados = req.body;
