@@ -53,18 +53,19 @@ module.exports={
     },
     async atualizarLoja(req, res){
         const dados = req.body;
-        const{nome,descrision,telefone,itens,username,password} = dados;
+        console.log(dados);
         const id = dados.id;
         
-        const sv = await clienteStore.findByPk(id)
-        sv.nome=dados.nome;
-        sv.descrision=dados.descrision;
-        sv.telefone=dados.telefone;
-        sv.itens=dados.itens;
-        sv.username=dados.username;
-        sv.password=dados.password;
+        const sv = await clienteStore.findByPk(id);
+
+        sv.nome=''+dados.nome;
+        sv.descrision=''+dados.descrision;
+        sv.telefone=''+dados.telefone;
+        sv.itens=''+dados.itens;
+        sv.username=''+dados.username;
+        sv.password=''+dados.password;
         sv.save();
-        return res.json(sv);
+        return res.json({ssv:sv});
        
     },
     async lojaDados(req,res){
