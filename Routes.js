@@ -37,6 +37,11 @@ function verificarADM(req,res, next){
      })
  }
 
+rota.get('/',(req,res)=>{
+    res.sendFile('index.html');
+})
+
+
 //ADMIN
 //rota.get('/',verificarJWT,admin.listaUser);
 rota.post('/login/admin',admin.loginAdmin);
@@ -47,6 +52,8 @@ rota.post('/apagar/pessoa',verificarADM,admin.deletarPessoa);
 rota.post('/cadastrar/loja',verificarADM,user.cadastrarLoja);
 rota.post('/editar/loja',admin.atualizarLoja);
 rota.get('/dadosloja/:id',admin.dados);
+
+
 
 //USUARIO
 rota.post('/loginUser',user.login);
