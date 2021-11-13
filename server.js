@@ -22,7 +22,9 @@ app.use(rotas);
 
 
 //soket.io
-
+app.get('/',(req,res)=>{
+    res.send('get');
+})
 
 io.on('connection',socket =>{
 //socket conection 
