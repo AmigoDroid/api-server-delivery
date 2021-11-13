@@ -59,8 +59,8 @@ module.exports = {
             return res.json({status:false});
         })
     },
-    async loginLoja(re) {
-        const dados = re.body;
+    async loginLoja(req,res) {
+        const dados = req.body;
         const tel = dados.username;
         const pass = dados.password;
 
@@ -76,12 +76,12 @@ module.exports = {
                 console.log(1+i + "/" + num);
                 if (user[i].username == tel && user[i].password == pass) {
                     const token = jwt.sign({userId:user.id},secret,{expiresIn:300});
-                    const res ={ status: true,token:token};
-                    return res;
+                    const resp ={ status: true,token:token};
+                    return res.json(resp);
                     break;
                 } else if (i + 1 >= num) {
-                    const res= {status: false}
-                    return res;
+                    const resp= {status: false}
+                    return res.json(resp);
                     break;
                 }
             }

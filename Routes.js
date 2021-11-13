@@ -37,9 +37,6 @@ function verificarADM(req,res, next){
      })
  }
 
-rota.get('/',(req,res)=>{
-    res.sendFile(__dirname,'index.html');
-});
 
 
 //ADMIN
@@ -52,6 +49,9 @@ rota.post('/apagar/pessoa',verificarADM,admin.deletarPessoa);
 rota.post('/cadastrar/loja',verificarADM,user.cadastrarLoja);
 rota.post('/editar/loja',admin.atualizarLoja);
 rota.get('/dadosloja/:id',admin.dados);
+
+//Logista
+rota.post('/login/loja',user.loginLoja);
 
 
 
