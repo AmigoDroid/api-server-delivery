@@ -38,8 +38,8 @@ function verificarADM(req,res, next){
  }
 
 rota.get('/',(req,res)=>{
-    res.sendFile('index.html');
-})
+    res.sendFile(__dirname,'index.html');
+});
 
 
 //ADMIN
