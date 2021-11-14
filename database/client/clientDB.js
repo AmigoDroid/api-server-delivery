@@ -76,7 +76,7 @@ module.exports = {
                 console.log(1+i + "/" + num);
                 if (user[i].username == tel && user[i].password == pass) {
                     const token = jwt.sign({userId:user.id},secret,{expiresIn:300});
-                    const resp ={ status: true,token:token};
+                    const resp ={ status: true,token:token,idLoja:user[i].id};
                     return res.json(resp);
                     break;
                 } else if (i + 1 >= num) {
