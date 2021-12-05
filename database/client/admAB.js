@@ -31,7 +31,7 @@ module.exports={
         const senha = body.pass;
         
         if(usuario==useradmin && senha==passadmin){
-            const tokenAdmin = jwt.sign({userId:'admin'},secretAdmin,{expiresIn:300});
+            const tokenAdmin = jwt.sign({userId:'admin'},secretAdmin,{expiresIn:28800});
             return res.json({status:true,tokenAdmin:tokenAdmin});
         }else{
             return res.json({status:false});

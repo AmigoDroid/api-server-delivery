@@ -4,9 +4,7 @@ const db = require('../config/db');
 const jwt = require('jsonwebtoken');
 const secret = 'chave-58242660'
 
-    const payload={
-
-    }
+ 
 
 module.exports = {
     async login(re, res) {
@@ -25,7 +23,7 @@ module.exports = {
             for (let i = 0; i < num; i++) {
                 console.log(1+i + "/" + num);
                 if (user[i].telefone == tel && user[i].password == pass) {
-                    const token = jwt.sign({userId:user.id},secret,{expiresIn:300});
+                    const token = jwt.sign({userId:user.id},secret,{expiresIn:28800});
                     return res.json({ status: true,token:token});
                     break;
                 } else if (i + 1 >= num) {
@@ -75,7 +73,7 @@ module.exports = {
             for (let i = 0; i < num; i++) {
                 console.log(1+i + "/" + num);
                 if (user[i].username == tel && user[i].password == pass) {
-                    const token = jwt.sign({userId:user.id},secret,{expiresIn:300});
+                    const token = jwt.sign({userId:user.id},secret,{expiresIn:28800});
                     const resp ={ status: true,token:token,idLoja:user[i].id};
                     return res.json(resp);
                     break;
