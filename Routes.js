@@ -59,5 +59,6 @@ rota.post('/login/loja',user.loginLoja);
 rota.post('/loginUser',user.login);
 rota.post('/cadastrar/usuario',user.cadastro);
 rota.get('/home/cliente/:token',verificarJWT,user.home);
+rota.get('/splash/delivery',admin.listar);
 
 module.exports=rota;
