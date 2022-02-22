@@ -33,6 +33,21 @@ module.exports = {
             }
         }
     },
+    async idLoja(req,res){
+        const id = req.params.id;
+        const Loja = await clienteStore.findAll();
+        const num = Loja.length;
+
+        for(let i =0; i<num;i++){
+            if(Loja[i].id == id){
+                return res.json({status:true})
+            }else{
+                if(i>num){
+                    return res.json({status:false})
+                }
+            }
+        }
+    },
     async cadastro(req, res) {
         const usuario = req.body;
         const novo = cliente_user.create(usuario).then(() => {

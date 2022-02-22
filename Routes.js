@@ -53,6 +53,8 @@ rota.get('/dadosloja/:id',admin.dados);
 //Logista
 rota.post('/login/loja',user.loginLoja);
 
+//sockete
+rota.get('/sockete/:id',user.idLoja);
 
 
 //USUARIO
