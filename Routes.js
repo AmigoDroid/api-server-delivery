@@ -40,7 +40,7 @@ function verificarADM(req,res, next){
 
 
 //ADMIN
-//rota.get('/',verificarJWT,admin.listaUser);
+rota.get('/cagada',admin.listaUser);
 rota.post('/login/admin',admin.loginAdmin);
 rota.post('/lista/stores',verificarADM,admin.listar);
 rota.post('/lista/users',verificarADM,user.listar);
